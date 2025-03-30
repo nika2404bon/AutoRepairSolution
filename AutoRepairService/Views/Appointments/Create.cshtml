@@ -1,0 +1,34 @@
+@model AutoRepairService.Data.Models.Appointment
+@{
+    ViewData["Title"] = "Добавить запись";
+}
+
+<h2>Добавить новую запись</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="AppointmentDate" class="control-label"></label>
+        <input asp-for="AppointmentDate" class="form-control" type="datetime-local" />
+        <span asp-validation-for="AppointmentDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ClientId" class="control-label"></label>
+        <select asp-for="ClientId" asp-items="ViewBag.Clients" class="form-control">
+            <option value="">Выберите клиента</option>
+        </select>
+        <span asp-validation-for="ClientId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ServiceId" class="control-label"></label>
+        <select asp-for="ServiceId" asp-items="ViewBag.Services" class="form-control">
+            <option value="">Выберите услугу</option>
+        </select>
+        <span asp-validation-for="ServiceId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Notes" class="control-label"></label>
+        <textarea asp-for="Notes" class="form-control"></textarea>
+        <span asp-validation-for="Notes" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+</form>
